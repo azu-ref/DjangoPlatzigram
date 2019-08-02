@@ -1,0 +1,30 @@
+Al correr el comando 'django-admin startproject *nombre del projecto*' generamos un folder con lo necesario para inicar un proyecto de django
+al final del proyecto podemos especificar la ruta donde queremos que se cree el proyecto.
+
+El folder contendra una carprta con el nombre del proyecto y un archivo manage.py
+
+en la carpeta del proyecto tendremos 4 archivos: 
+        -__ini__.py: Se encarga de declar elproyecto como un modulo de python
+        -sttings.py: Es el archivo mas importante de django, y es donde dfinimos la configuracion de nuestro proyecto
+        -urls.py: Es el punto de entrada para todoas las peticiones que reciba el servidor de Django
+        -wsgi.py: Es el archivo usado durante el deploy para produccion y Es la WSGI con nustro proyecto de django 
+        cuando esta en produccion
+        
+        -manage.py: es un archivo que nunc avamos a tocar, perointrectuaremos con el durante todo el desarrollo
+
+        
+A demas en el archivo settings podemos encontrar comentarios y links a la documentacion de django agregados por defecto,
+la linea mas importante de ese archivo es: BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) 
+la cual declara la direccion donde esta corriendo el proyecto.
+La varibale debug debe permanecer en true mientras el proyecto esta en desarrollo, esto debe cambiar cuando el proyecto sea enviado a produccion
+En el archivo settings estan definidas por defecto las aplicaciones y midlewares que usa django desde para conectarse a la base de datos hasta la
+autenticacion y validacion de usuarios
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+para especificar una ruta lo hacemos en el archivo de urls:
+
+necesitamos la clase HttpResponse la cual importamos de django.http, con estos ya podemos enviar respuestas por nuestras urls
+
+Definimos la urls en la lista ulrpatterns, con la funcion path(), donde el primer argumento es el nombre con el cual accederemos y elsegundo la funcion
+que recibe o deuelve la peticion
