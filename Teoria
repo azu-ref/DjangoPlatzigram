@@ -28,3 +28,15 @@ necesitamos la clase HttpResponse la cual importamos de django.http, con estos y
 
 Definimos la urls en la lista ulrpatterns, con la funcion path(), donde el primer argumento es el nombre con el cual accederemos y elsegundo la funcion
 que recibe o deuelve la peticion
+
+-------------------------------------------------------------------------------------------------------------
+
+Podemos enviar parametro a las rutas diractamente como si fuera una query y tomarla con el metodo GET del request, y acceder a la variable, para parsear esos Datos a JSON tenemos dos formas, con JsonResponse que directamente responde con un json si le pasamos un diccionario como argumento,
+
+o con el HttpResponse y el modulo de json, que contiene el metodo dumps, que convierte un diccionario a json,
+como segundo parametro de la respuesta pasamos el argumento del tipo de aplicaion en este caso 'application/json'
+
+---------------------------------------------------------------------------------------------------------
+
+Tambien podemos definir argumentos en las rutas de nustra aplicacon con el tipo y de la variable y el nombre:
+'ruta/<type:name' podemos definir tantos como queramos
