@@ -40,3 +40,10 @@ como segundo parametro de la respuesta pasamos el argumento del tipo de aplicaio
 
 Tambien podemos definir argumentos en las rutas de nustra aplicacon con el tipo y de la variable y el nombre:
 'ruta/<type:name' podemos definir tantos como queramos
+
+----------------------------------------------------------------------------------------------------
+
+para crear una aplicacion (que es una parte de nuestro proyecto final) utilizamos el comando:
+'python manage.py startapp name-app'
+
+Esto creara un nuevo folder con el nombrede la aplicacion creada
