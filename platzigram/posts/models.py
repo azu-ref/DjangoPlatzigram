@@ -12,9 +12,13 @@ class User(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
 
+    isAdmin = models.BooleanField(default=False)
+
     bio = models.TextField(blank=True)
 
     birthdate = models.DateField(blank=True, null=True)
+
+    country = models.CharField(max_length=100, blank=True, null=True)
 
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)

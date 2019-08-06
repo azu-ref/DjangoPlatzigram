@@ -60,3 +60,5 @@ A la funcion render se le deben pasar 3 parametros, el objeto request, el nombre
 Migraciones 
 
 para realizar una migracion deirectamente de una clase definida, primero debemos ejecutar el comando makemigrations, el cual creaa un archivo de migracion en base a lo que definimos en la clase, depues ejecutamos el comando migrate, y llevamos la clase a la base de datos en forma de tabla
+
+ANtes de correr migrate ajuro debemos correr makemigrations, ya que el primer comando depende de los archivos de migraciones
