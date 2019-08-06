@@ -54,3 +54,9 @@ Para trabajar nuestros templates en django creamos una carpeta templates dentro 
 en el archivo views, importamos el metodo render, lo retornamos en la funcion de la ruto y le pasamos como parametro el nombre de nuestro templete, debido a que  django tiene previamente definido en settings como trabajar y buscar los templetes, esta implementacion es muy sencilla.
 
 A la funcion render se le deben pasar 3 parametros, el objeto request, el nombre del template, y si existe una variable en un diccionaris. esta variable puede ser accedida desde el template html
+
+------------------------------------------------------------------------------------------------------
+
+Migraciones 
+
+para realizar una migracion deirectamente de una clase definida, primero debemos ejecutar el comando makemigrations, el cual creaa un archivo de migracion en base a lo que definimos en la clase, depues ejecutamos el comando migrate, y llevamos la clase a la base de datos en forma de tabla
