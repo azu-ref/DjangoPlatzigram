@@ -3,13 +3,32 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import DetailView
+from django.urls import reverse
 
 #models
 from django.contrib.auth.models import User
 from users.models import Profile
+from posts.models import Post
 
 #forms
 from users.forms import ProfileForm, SignUpForm
+
+class UserDetailView(LoginRequiredMixin, DetailView):
+    """Users details View"""
+    template_name = 'users/detail.html'
+    slug_field = 'username'
+    slug_url_kwarg = 'username'
+    queryset = User.objects.all()
+    context_object_name = 'user'
+
+    def get_context_data(self, **kwargs):
+        """Add user's posts to content"""
+        context = super().get_context_data(**kwargs)
+        user = self.get_object()
+        context['posts'] = Post.objects.filter(user=user).order_by('-created')
+        return context
 
 def login_view(request):
     """login views"""
@@ -19,7 +38,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('feed')
+            return redirect('posts:feed')
         else:
             return render(request, 'users/login.html', {'error': 'Invalid username or password'})
        
@@ -28,14 +47,14 @@ def login_view(request):
 @login_required
 def logout_view(request):
     logout(request)
-    return redirect('login')
+    return redirect('users:login')
 
 def signup_views(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect('users:login')
     else:
         form = SignUpForm()
 
@@ -56,7 +75,8 @@ def update_profile(request):
             profile.picture = data['picture']
             profile.save()
             
-            return redirect('update_profile')
+            url = reverse('users:detail', kwargs={'username': request.user.username})
+            return redirect(url)
     else:        
         form = ProfileForm()
 
