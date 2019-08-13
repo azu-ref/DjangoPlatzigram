@@ -28,12 +28,12 @@ urlpatterns = [
 
     path(
         route='signup/', 
-        view=views.signup_views, 
+        view=views.SignUpView.as_view(), 
         name='signup'),
 
     path(
         route='me/profile/', 
-        view=views.update_profile, 
+        view=views.UpdateProfileView.as_view(), 
         name='update_profile'),
 
 ]
