@@ -18,7 +18,7 @@ urlpatterns = [
     # Management
     path(
         route='login/', 
-        view=views.login_view, 
+        view=views.LoginView.as_view(), 
         name='login'),
 
     path(

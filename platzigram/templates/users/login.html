@@ -4,9 +4,9 @@
     {% endblock head_content %}
 
     {% block container %}
-        {% if error %}
+        {% if form.errors %}
         <div class="alert alert-danger" role="alert">
-                {{error}}
+                Incorrect username or password
               </div>
         {% endif %}
 
